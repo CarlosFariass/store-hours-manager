@@ -19,7 +19,6 @@ export const loader: LoaderFunction = async ({ request }) => {
 export const action: ActionFunction = async ({ request }) => {
   try {
     const data = await request.json()
-    console.log("Happy days:", data)
 
     if (!data.openTime || !data.closeTime) {
       return json({ error: "openTime e closeTime are mandatory" }, { status: 400 })

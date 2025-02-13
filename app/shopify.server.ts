@@ -60,9 +60,7 @@ async function createScriptTag(session: Session) {
           },
         },
       })
-      console.log("ScriptTag created!")
     } else {
-      console.log("ScriptTag already exist.")
     }
   } catch (error) {
     console.error("Erro creating ScriptTag:", error)
