@@ -14,7 +14,7 @@
 - `StoreHoursConfigForm.css`: Components style.
 - `entry.server.tsx`: Is responsible for rendering the Remix application on the server, generating the initial HTML that is sent to the client, and adding response headers necessary for the Shopify integration.
 - `shopify.server.ts`: Configures and initializes the Shopify application, manages authentication, sessions, and creates ScriptTags to inject custom scripts into stores.
-- `schema.prisma`: Define a estrutura do banco de dados, incluindo tabelas para sessões (Session) e horários da loja (StoreHours), utilizando o Prisma ORM.
+- `schema.prisma`: Defines the database structure, including tables for sessions (Session) and store hours (StoreHours), using the Prisma ORM.
 - `/public/scripts/store-hours.js`: Responsible to check store hours, disable the "Add to Cart" button during closed hours and display an informative message to the user.
 
 
