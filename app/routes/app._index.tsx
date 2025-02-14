@@ -2,14 +2,14 @@ import { useEffect, useState } from "react"
 import { StoreHoursConfigForm } from "./components/StoreHoursConfigForm"
 
 export default function StoreHoursPage() {
-  const [openTime, setOpenTime] = useState("09:00")
-  const [closeTime, setCloseTime] = useState("18:00")
+  const [openTime, setOpenTime] = useState<string | null>(null)
+  const [closeTime, setCloseTime] = useState<string | null>(null)
 
   useEffect(() => {
-    async function fetchStoreHours() {
-      const response = await fetch('/api/store-hours')
+    async function getStorehours() {
+      const response = await fetch("/api/store-hours")
       if (!response.ok) {
-        console.error('Error loading')
+        console.error("Error loading store hours")
         return
       }
       const data = await response.json()
@@ -18,31 +18,41 @@ export default function StoreHoursPage() {
         setCloseTime(data.closeTime)
       }
     }
-    
-    fetchStoreHours()
+
+    getStorehours()
   }, [])
 
   const handleSave = async () => {
-    const response = await fetch('/api/store-hours', {
-      method: 'POST',
+    if (!openTime || !closeTime) {
+      alert("Please set both open and close times.")
+      return
+    }
+
+    if (openTime >= closeTime) {
+      alert("Open time must be before close time.")
+      return
+    }
+
+    const response = await fetch("/api/store-hours", {
+      method: "POST",
       body: JSON.stringify({ openTime, closeTime }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { "Content-Type": "application/json" },
     })
     const data = await response.json()
+    if (data.success) {
+      alert("Store hours saved successfully!")
+    }
   }
 
   return (
     <div>
       <StoreHoursConfigForm
-        openTime={openTime}
-        closeTime={closeTime}
-        setOpenTime={setOpenTime}
-        setCloseTime={setCloseTime}
+        openTime={openTime || ""}
+        closeTime={closeTime || ""}
+        setOpenTime={(time) => setOpenTime(time)}
+        setCloseTime={(time) => setCloseTime(time)}
         onSave={handleSave}
       />
     </div>
   )
 }
-

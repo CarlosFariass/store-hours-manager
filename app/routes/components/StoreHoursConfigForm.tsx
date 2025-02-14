@@ -4,9 +4,9 @@ import "./StoreHoursConfigForm.css"
 interface StoreHoursConfigFormProps {
   openTime: string
   closeTime: string
-  setOpenTime: React.Dispatch<React.SetStateAction<string>>
-  setCloseTime: React.Dispatch<React.SetStateAction<string>>
-  onSave: () => Promise<void> 
+  setOpenTime: (time: string) => void
+  setCloseTime: (time: string) => void
+  onSave: () => void
 }
 
 export const StoreHoursConfigForm: React.FC<StoreHoursConfigFormProps> = ({

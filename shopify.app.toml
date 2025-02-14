@@ -1,7 +1,7 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "baa4d410077cf680589be39bd745c377"
-application_url = "https://tc-freight-more-modem.trycloudflare.com"
+application_url = "https://colin-fp-advertisement-refresh.trycloudflare.com"
 embedded = true
 name = "store-hours-manager"
 handle = "store-hours-manager-4"
@@ -27,10 +27,13 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://tc-freight-more-modem.trycloudflare.com/auth/callback",
-  "https://tc-freight-more-modem.trycloudflare.com/auth/shopify/callback",
-  "https://tc-freight-more-modem.trycloudflare.com/api/auth/callback"
+  "https://colin-fp-advertisement-refresh.trycloudflare.com/auth/callback",
+  "https://colin-fp-advertisement-refresh.trycloudflare.com/auth/shopify/callback",
+  "https://colin-fp-advertisement-refresh.trycloudflare.com/api/auth/callback"
 ]
 
 [pos]
 embedded = false
+
+[app]
+host = "https://e6e8-2804-14c-138-87fe-21fb-b77c-5a5d-28d4.ngrok-free.app"
